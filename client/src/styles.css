@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(255 255 255 / 0.07);
+  padding: 0.85rem 0.95rem;
+  color: white;
+  outline: none;
+}
+
+input:focus {
+  border-color: rgb(45 212 191 / 0.8);
+  box-shadow: 0 0 0 3px rgb(45 212 191 / 0.16);
+}
+
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.field-label {
+  display: grid;
+  gap: 0.45rem;
+  color: rgb(203 213 225);
+  font-size: 0.86rem;
+}
+
+.primary-action,
+.secondary-action {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 8px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  padding: 0.75rem 1rem;
+  font-weight: 800;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.primary-action {
+  background: linear-gradient(135deg, #2dd4bf, #f43f5e);
+  color: #06111a;
+  box-shadow: 0 18px 55px rgb(45 212 191 / 0.22);
+}
+
+.secondary-action {
+  background: rgb(255 255 255 / 0.065);
+  color: white;
+}
+
+.primary-action:not(:disabled):hover,
+.secondary-action:not(:disabled):hover,
+.icon-button:hover,
+.tiny-button:hover {
+  transform: translateY(-1px);
+  border-color: rgb(45 212 191 / 0.45);
+}
+
+.icon-button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 8px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(255 255 255 / 0.07);
+  color: white;
+}
+
+.tiny-button {
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(255 255 255 / 0.07);
+  padding: 0.32rem 0.55rem;
+  color: rgb(204 251 241);
+  font-size: 0.72rem;
+}
+
+.coin {
+  position: relative;
+  width: min(68vw, 310px);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  transition: transform 500ms ease;
+}
+
+.coin::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  z-index: -1;
+  border-radius: 50%;
+  background: rgb(45 212 191 / 0.34);
+  filter: blur(42px);
+}
+
+.coin-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 10px solid rgb(255 255 255 / 0.16);
+  backface-visibility: hidden;
+  background:
+    radial-gradient(circle at 32% 28%, rgb(255 255 255 / 0.96), transparent 12%),
+    radial-gradient(circle at 70% 76%, rgb(244 63 94 / 0.7), transparent 22%),
+    linear-gradient(135deg, #14b8a6, #fbbf24 48%, #f43f5e);
+  box-shadow: inset 0 0 50px rgb(255 255 255 / 0.22), 0 28px 90px rgb(0 0 0 / 0.42);
+}
+
+.coin-face span {
+  max-width: 74%;
+  overflow-wrap: anywhere;
+  text-align: center;
+  color: #08111f;
+  font-size: clamp(1.8rem, 8vw, 3.4rem);
+  font-weight: 1000;
+  line-height: 0.98;
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.34);
+}
+
+.coin-back {
+  transform: rotateY(180deg);
+}
+
+.coin-flipping {
+  animation: flip 2.35s cubic-bezier(0.17, 0.67, 0.22, 1.05);
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(0) translateY(0) scale(1);
+  }
+  34% {
+    transform: rotateY(720deg) translateY(-44px) scale(1.08);
+  }
+  68% {
+    transform: rotateY(1440deg) translateY(14px) scale(0.98);
+  }
+  100% {
+    transform: rotateY(1800deg) translateY(0) scale(1);
+  }
+}

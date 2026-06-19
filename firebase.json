@@ -1,0 +1,30 @@
+{
+  "hosting": {
+    "public": "client/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "ggc-toss-api",
+          "region": "asia-south1"
+        }
+      },
+      {
+        "source": "/socket.io/**",
+        "run": {
+          "serviceId": "ggc-toss-api",
+          "region": "asia-south1"
+        }
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
