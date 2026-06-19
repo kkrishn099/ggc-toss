@@ -277,11 +277,11 @@ function Lobby({ roomId, setRoomId, nickname, setNickname, createRoom, joinRoom 
         <div className="grid gap-3">
           <label className="field-label">
             Nickname
-            <input placeholder="Krishna" value={nickname} onChange={(event) => setNickname(event.target.value)} />
+            <input placeholder="Enter Your Name" value={nickname} onChange={(event) => setNickname(event.target.value)} required/>
           </label>
           <label className="field-label">
             Room code
-            <input placeholder="Create or paste a room code" value={roomId} onChange={(event) => setRoomId(event.target.value.trim())} />
+            <input placeholder="Create or paste a room code" value={roomId} onChange={(event) => setRoomId(event.target.value.trim())} required />
           </label>
           <div className="grid gap-3 sm:grid-cols-2">
             <button type="button" onClick={createRoom} className="secondary-action justify-center">
